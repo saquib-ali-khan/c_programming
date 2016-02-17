@@ -1,4 +1,4 @@
-// c language does not allow dyanimc memory allocation  
+// c language arrays do not allow dyanimc memory allocation  
 // here is how we  allocate a 2d array dynamically::
 //
 IMPORTANT NOTE:
