@@ -9,7 +9,6 @@ IMPORTANT NOTE:
 
 //.......code.......
 // METHOD 1: USING THE ARRAY OF POINTERS:  // this works only when we intially know the no. of rows atleast
-
  #include<stdio.h>
  #include<stdlib.h>
  
@@ -45,9 +44,8 @@ IMPORTANT NOTE:
  { 
    for(j=0;j<no_of_columns;j++)
     { 
-       printf("%d",p[i][j];
-       
-      }
+       printf("%d",p[i][j]);
+      }  printf("\n");
   }    
 
 
@@ -56,13 +54,14 @@ return 0;
 }
 
 
+
 // METHOD 2: USING DOUBLE POINTERS:  // ## easy to use but inefficient from space and time point of view(explained in readme)
 
 #include<stdio.h>
-#include<stdlib.>
+#include<stdlib.h>
 
 int main()
-{int i;  int count=0 ;
+{int i,j;  int count=0 ;  
 int no_of_rows,no_of_columns;
 printf("enter the no. of rows and columns");
 scanf("%d%d",&no_of_rows,&no_of_columns);
@@ -93,7 +92,7 @@ for(i=0;i<no_of_rows;i++)
     { 
       printf("%d",p[i][j]);
       
-    }  
+    }   printf("\n");
 }    
 
 return 0;
@@ -101,22 +100,26 @@ return 0;
 }
 
 
+
+
 ################ 
 
 
 METHOD 3:  USING SINGLE POINTERS  :    // most efficient in terms of time  and space complexity
-#includde<stdio.h>
+#include<stdio.h>
 #include<stdlib.h>
 
 int main()
 {
-int i,j;
+int i,j; int count=0 ;
 int *p; 
 int no_of_rows,no_of_columns;
-p=(int *)malloc( sizeof(int) * (no_or_rows * no_of_columns));
 
 printf("enter the no. of rows and columns");
-scanf("%d%d",no_of_rows,no_of_columns);
+scanf("%d%d",&no_of_rows,&no_of_columns);
+
+p=(int *)malloc(sizeof(int)*(no_of_rows * no_of_columns));
+
 
 //now  a linear memory of  (no_of_rows * no_of_columns) has been assigned
 //so now to be able to access above memory in a 2d fashion(i.e, to acces p[i][j]th element, we do not do as follows
@@ -125,9 +128,9 @@ scanf("%d%d",no_of_rows,no_of_columns);
 
 for(i=0;i<no_of_rows;i++)
 {  
-   for(j=0;i<no_of_columns;j++)
+   for(j=0;j<no_of_columns;j++)
     {    
-    *(p + no_of_columns*i + j)=count++;
+    *(p + (no_of_columns*i)+ j)=count++;
 
      }
 
@@ -140,7 +143,7 @@ for(i=0;i<no_of_rows;i++)
    {  
       printf("%d",*(p + no_of_columns*i + j));
       
-  }    
+  }    printf("\n");
    
 }   
    
