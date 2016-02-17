@@ -1,0 +1,148 @@
+// c language does not allow dyanimc memory allocation  
+// here is how we  allocate a 2d array dynamically::
+//
+IMPORTANT NOTE:
+ '
+ P[I][J];   IT LITERALLY MEANS: *(*(P + I) + J) ;
+
+
+
+//.......code.......
+// METHOD 1: USING THE ARRAY OF POINTERS:  // this works only when we intially know the no. of rows atleast
+
+ #include<stdio.h>
+ #include<stdlib.h>
+ 
+ int main()
+ {
+ int i,j,count=0;
+ int no_of_rows=9;
+ int no_of_columns;
+ 
+ printf("enter the no. of columns");
+ scanf("%d",&no_of_columns);
+ 
+ int *p[no_of_rows];
+ 
+ for(i=0;i<no_of_rows;i++)
+ {
+ p[i]=(int*)malloc(sizeof(int)*no_of_columns);
+ 
+ }
+ 
+ for(i=0;i<no_of_rows;i++)
+{
+   for(j=0;j<no_of_columns;j++)
+   {  
+   
+      p[i][j]=count++;
+      
+  } 
+ 
+}    
+ 
+ for(i=0;i<no_of_rows;i++)
+ { 
+   for(j=0;j<no_of_columns;j++)
+    { 
+       printf("%d",p[i][j];
+       
+      }
+  }    
+
+
+return 0;
+
+}
+
+
+// METHOD 2: USING DOUBLE POINTERS:  // ## easy to use but inefficient from space and time point of view(explained in readme)
+
+#include<stdio.h>
+#include<stdlib.>
+
+int main()
+{int i;  int count=0 ;
+int no_of_rows,no_of_columns;
+printf("enter the no. of rows and columns");
+scanf("%d%d",&no_of_rows,&no_of_columns);
+
+//concept starts here 
+int **p;
+p=(int **)malloc(sizeof(int *) * no_of_rows);
+for(i=0;i<no_of_rows;i++)
+{
+p[i]=(int*)malloc(sizeof(int) * no_of_columns);
+}
+
+for(i=0;i<no_of_rows;i++)
+{
+  for(j=0;j<no_of_columns;j++)
+  {  p[i][j]=count++;
+  }
+}  
+
+// concept ends here
+
+
+
+  
+for(i=0;i<no_of_rows;i++)
+{  
+  for(j=0;j<no_of_columns;j++)
+    { 
+      printf("%d",p[i][j]);
+      
+    }  
+}    
+
+return 0;
+
+}
+
+
+################ 
+
+
+METHOD 3:  USING SINGLE POINTERS  :    // most efficient in terms of time  and space complexity
+#includde<stdio.h>
+#include<stdlib.h>
+
+int main()
+{
+int i,j;
+int *p; 
+int no_of_rows,no_of_columns;
+p=(int *)malloc( sizeof(int) * (no_or_rows * no_of_columns));
+
+printf("enter the no. of rows and columns");
+scanf("%d%d",no_of_rows,no_of_columns);
+
+//now  a linear memory of  (no_of_rows * no_of_columns) has been assigned
+//so now to be able to access above memory in a 2d fashion(i.e, to acces p[i][j]th element, we do not do as follows
+// not like p[i][j], cz it literally means *(*(p+i)+j)  
+//but we actually do as follows:
+
+for(i=0;i<no_of_rows;i++)
+{  
+   for(j=0;i<no_of_columns;j++)
+    {    
+    *(p + no_of_columns*i + j)=count++;
+
+     }
+
+}
+
+
+for(i=0;i<no_of_rows;i++)
+{
+   for(j=0;j<no_of_columns;j++)
+   {  
+      printf("%d",*(p + no_of_columns*i + j));
+      
+  }    
+   
+}   
+   
+return 0;
+}
