@@ -105,7 +105,7 @@ return 0;
 ################ 
 
 
-METHOD 3:  USING SINGLE POINTERS  :    // most efficient in terms of time  and space complexity
+METHOD 3:  USING SINGLE POINTER  :    // most efficient in terms of time  and space complexity
 #include<stdio.h>
 #include<stdlib.h>
 
